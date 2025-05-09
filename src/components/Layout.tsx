@@ -9,7 +9,7 @@ const Layout = () => {
         <Navbar />
       </header>
 
-      <main className="flex-grow px-4 py-6">
+      <main className="flex-grow flex items-center justify-center bg-gray-200 dark:bg-light-navy">
         <Outlet />
       </main>
 

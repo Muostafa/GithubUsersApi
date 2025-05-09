@@ -17,7 +17,7 @@ const Navbar = () => {
             className={`px-4 py-2 rounded-md  ${
               location.pathname === "/"
                 ? "bg-blue-600 text-white"
-                : "hover:bg-light-slate dark:hover:bg-slate"
+                : "hover:bg-light-slate"
             }`}
           >
             Home
@@ -27,7 +27,7 @@ const Navbar = () => {
             className={`px-4 py-2 rounded-md ${
               location.pathname === "/favorites"
                 ? "bg-blue-600 text-white"
-                : "hover:bg-light-slate dark:hover:bg-slate"
+                : "hover:bg-light-slate"
             }`}
           >
             Favorites
