@@ -17,7 +17,7 @@ const Layout = () => {
         className="bg-slate text-white p-4 text-center"
         role="contentinfo"
       >
-        <p>&copy; {new Date().getFullYear()} GitHub Users Explorer</p>
+        <p>&copy; {new Date().getFullYear()} Mustafa's GitHub Users Explorer</p>
       </footer>
     </div>
   );
