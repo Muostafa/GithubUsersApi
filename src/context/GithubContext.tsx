@@ -25,6 +25,26 @@ type GithubContextType = {
 
 const GithubContext = createContext<GithubContextType | undefined>(undefined);
 
+// Function to load initial favorites from localStorage
+const loadInitialFavorites = (): GithubUser[] => {
+  const storedFavorites = localStorage.getItem("githubFavorites");
+  if (storedFavorites) {
+    try {
+      const parsedFavorites = JSON.parse(storedFavorites);
+      // Basic validation: check if it's an array
+      if (Array.isArray(parsedFavorites)) {
+        return parsedFavorites;
+      }
+      console.error("Stored favorites is not an array:", parsedFavorites);
+      return [];
+    } catch (e) {
+      console.error("Error parsing stored favorites for initial state", e);
+      return []; // Fallback to empty array on parse error
+    }
+  }
+  return []; // Fallback if nothing in localStorage
+};
+
 export const GithubProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -34,21 +54,10 @@ export const GithubProvider: React.FC<{ children: React.ReactNode }> = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [searchTerm, setSearchTerm] = useState<string>("");
-  const [favorites, setFavorites] = useState<GithubUser[]>([]);
+  const [favorites, setFavorites] =
+    useState<GithubUser[]>(loadInitialFavorites);
 
   const usersPerPage = 8;
-
-  // Load favorites from localStorage on initial render
-  useEffect(() => {
-    const storedFavorites = localStorage.getItem("githubFavorites");
-    if (storedFavorites) {
-      try {
-        setFavorites(JSON.parse(storedFavorites));
-      } catch (e) {
-        console.error("Error parsing stored favorites", e);
-      }
-    }
-  }, []);
 
   // Save favorites to localStorage whenever it changes
   useEffect(() => {
@@ -60,7 +69,7 @@ export const GithubProvider: React.FC<{ children: React.ReactNode }> = ({
     setError(null);
     try {
       // Fetch more users than we need for the first page to support search
-      const response = await fetch(`https://api.github.com/users?per_page=100`);
+      const response = await fetch("https://api.github.com/users");
       if (!response.ok) {
         throw new Error("Failed to fetch users");
       }
@@ -83,13 +92,11 @@ export const GithubProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const toggleFavorite = (user: GithubUser) => {
-    if (favorites.some((fav) => fav.id === user.id)) {
-      // Remove from favorites
-      setFavorites(favorites.filter((fav) => fav.id !== user.id));
-    } else {
-      // Add to favorites
-      setFavorites([...favorites, user]);
-    }
+    setFavorites((prevFavorites) =>
+      prevFavorites.some((fav) => fav.id === user.id)
+        ? prevFavorites.filter((fav) => fav.id !== user.id)
+        : [...prevFavorites, user]
+    );
   };
 
   const isFavorite = (id: number) => {
