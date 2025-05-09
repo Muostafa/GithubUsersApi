@@ -1,11 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: "class",
+  darkMode: "class", // enables dark mode via 'class'
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}", // Added this line
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     container: {
@@ -18,19 +18,18 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: {
-          light: "#ffffff",
-          dark: "#1a1a1a",
-        },
-        text: {
-          light: "#000000",
-          dark: "#ffffff",
-        },
-        "light-navy": "#112240",
-        "lightest-navy": "#8892b0",
+        // Semantic names for easier use in light/dark themes
+        "bg-base": "#ffffff", // Light background
+        "bg-dark": "#1a1a1a", // Dark background
+        "text-base": "#000000", // Light text
+        "text-dark": "#ffffff", // Dark text
+
+        // Accent and UI colors
         slate: "#0a192f",
         "light-slate": "#a8b2d1",
         "lightest-slate": "#ccd6f6",
+        "light-navy": "#112240",
+        "lightest-navy": "#8892b0",
         white: "#e6f1ff",
         green: "#64ffda",
         purple: "#604CC3",
