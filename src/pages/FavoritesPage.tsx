@@ -1,4 +1,3 @@
-import React from "react";
 import { useGithub } from "../context/GithubContext";
 import UserCard from "../components/UserCard";
 import { Link } from "react-router-dom";

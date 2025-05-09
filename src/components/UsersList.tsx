@@ -1,4 +1,3 @@
-import React from "react";
 import { useGithub } from "../context/GithubContext";
 import UserCard from "./UserCard";
 import Pagination from "./Pagination";
