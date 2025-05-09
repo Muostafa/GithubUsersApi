@@ -1,61 +1,61 @@
-# React + TypeScript + Vite - GitHub Users API
+# GitHub Users App
 
-This project is a web application built with React, TypeScript, and Vite that allows users to search for GitHub users and view their profiles.
+A React-based web application built with TypeScript and Vite that fetches and displays a paginated list of GitHub users, with search, favorites, and dark mode features.
 
 ## Setup Instructions
 
-1.  **Clone the repository:**
+1. **Clone the repository:**
 
-    ```bash
-    git https://github.com/Muostafa/GithubUsersApi.git
-    cd GithubUsersApi
-    ```
+   ```bash
+   git clone https://github.com/Muostafa/GithubUsersApi.git
+   cd GithubUsersApi
+   ```
 
-2.  **Install dependencies:**
-    Make sure you have Node.js and npm (or yarn) installed.
+2. **Install dependencies:**
+   Make sure you have Node.js and npm (or yarn) installed.
 
-    ```bash
-    npm install
-    # or
-    # yarn install
-    ```
+   ```bash
+   npm install
+   # or
+   # yarn install
+   ```
 
-3.  **Environment Variables:**
-    This project might require a GitHub Personal Access Token if you encounter API rate limits. If so, create a `.env` file in the root directory and add your token:
+3. **Environment Variables:**
+   This project might require a GitHub Personal Access Token if you encounter API rate limits. If so, create a `.env` file in the root directory and add your token:
 
-    ```
-    VITE_GITHUB_TOKEN=your_github_personal_access_token
-    ```
+   ```
+   VITE_GITHUB_TOKEN=your_github_personal_access_token
+   ```
 
-    You can generate a token from your GitHub settings. Ensure the token has the `public_repo` scope.
+   You can generate a token from your GitHub settings. Ensure the token has the `public_repo` scope.
 
-4.  **Run the development server:**
+4. **Run the development server:**
 
-    ```bash
-    npm run dev
-    # or
-    # yarn dev
-    ```
+   ```bash
+   npm run dev
+   # or
+   # yarn dev
+   ```
 
-    This will start the development server, typically at `http://localhost:5173`.
+   This will start the development server, typically at `http://localhost:5173`.
 
-5.  **Build for production:**
+5. **Build for production:**
 
-    ```bash
-    npm run build
-    # or
-    # yarn build
-    ```
+   ```bash
+   npm run build
+   # or
+   # yarn build
+   ```
 
-    This command bundles the application into static files for production in the `dist` directory.
+   This command bundles the application into static files for production in the `dist` directory.
 
-6.  **Linting:**
-    To check for linting errors:
-    ```bash
-    npm run lint
-    # or
-    # yarn lint
-    ```
+6. **Linting:**
+   To check for linting errors:
+   ```bash
+   npm run lint
+   # or
+   # yarn lint
+   ```
 
 ## Technical Design Rationale
 
